@@ -11,7 +11,10 @@ vvani06: Discord sample bot:         https://qiita.com/vvani06/items/f437c5e89ae
 and  write down on`_env`
 1. if you wanna notify communities based on google spreadsheets list,
   spread it on the web and get `id`
-  then you write this on `env` 'https://spreadsheets.google.com/feeds/list/{id}/od6/public/basic?alt=json
+  
+  then you write this on `env` https://spreadsheets.google.com/feeds/list/{id}/od6/public/basic?alt=json
+  ### Please share your spreadsheet on the web or via URL. 
+  ### If not,program doesn't work
 1. Just run on `glitch.com` !
 
 To get discord bot token, visit discord official develoer site; https://discordapp.com/developers/applications/me/

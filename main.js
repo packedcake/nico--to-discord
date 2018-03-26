@@ -74,13 +74,15 @@ async.waterfall([
           live_ids.forEach(function(live_id) {
             var prev_post_text;
               var stream_info=NicoLiveAlert.retrievePlayerstatus(live_id);
-              var info= stream_info.split(',');
-            console.log(info[0]+"//info[0]");
-            console.log(info[1]+"//info[1]");
-            console.log(info[2]+"//info[2]");
-            console.log(info[4]+"//info[4]");
-            console.log(info[5]+"//info[5]");
-            var post_text = info[0]+ "さんが"+info[1]+ "で配信を開始しました"+"\n"+ "http://live2.nicovideo.jp/watch/lv" + live_id;
+      
+            console.log(stream_info[0]+"//info[0]");
+            console.log(stream_info[1]+"//info[1]");
+            console.log(stream_info[2]+"//info[2]");
+            console.log(stream_info[4]+"//info[4]");
+            console.log(stream_info[5]+"//info[5]");
+            console.log(stream_info[6]+"//info[6]");
+            console.log(stream_info[7]+"//info[7]");
+            var post_text = stream_info[0]+ "さんが"+stream_info[1]+ "で配信を開始しました"+"\n"+ "http://live2.nicovideo.jp/watch/lv" + live_id;
             
 	          
             if(prev_post_text != post_text){
@@ -92,13 +94,13 @@ async.waterfall([
         client.channels.find("name",process.env.text_channel_name).send(post_text_cut[0]);
     const embed = new discord.RichEmbed()
     .setColor(0xFFFFFB)
-    .setTitle(info[2])
-    .setAuthor(info[2], "https://www.google.com/s2/favicons?domain=http://live.nicovideo.jp/?header")
+    .setTitle(stream_info[2])
+    .setAuthor(stream_info[2], "https://www.google.com/s2/favicons?domain=http://live.nicovideo.jp/?header")
     .setURL('http://live2.nicovideo.jp/watch/lv'+live_id)
-    .setDescription(info[3])
+    .setDescription(stream_info[3])
     .setTimestamp()
-    .setThumbnail(info[4])
-    .addField("タグ", info[5]+" "+info[6]+" "+info[7], true)
+    .setThumbnail(stream_info[4])
+    .addField("タグ", stream_info[5]+" "+stream_info[6]+" "+stream_info[7], true)
     .setFooter("ママエアロ");    
     client.channels.find("name",process.env.text_channel_name).send({embed});
               // hook.send(ce(
